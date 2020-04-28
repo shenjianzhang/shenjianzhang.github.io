@@ -14,7 +14,7 @@ Advisor: Dr. Rongjiang Wang, working with Prof. Torsten Dahm and Dr. Sebastian H
 Developed a straightforward and time-saving method for simulating PEGS induced by earthquakes and made an application on the 2011 Tohoku Mw9.1 earthquake.
 
 - **2016.10 - present**, *A finite frequency method for receiver function based on perturbation theory.*   
-Advisor: Prof. Frederik Tilmann and Dr. Rongjian Wang, wording with Dr. Kai Deng at Chengdu University of Technology.   
+Advisor: Prof. Frederik Tilmann and Dr. Rongjian Wang, working with Dr. Kai Deng at Chengdu University of Technology.   
 Developing the method of finite frequency receiver function using variation method.   
 
 - **2015.09 - 2016.10**, *The finite frequency effect on receiver function inversion method.*   
@@ -27,9 +27,9 @@ Calculated the b-value distribution in Southwest China using Bayesian method and
 
 ### Pulications
 - Zhang, S., Zhou, S., 2016. Spatial and temporal variation of b-value in Southwest China. *Pure & 
-Applied Geophysics*, 173, 85-96.[DOI:10.1785/gssrl.78.1.134.](https://link.springer.com/article/10.1007/s00024-015-1044-7)
+Applied Geophysics*, 173, 85-96. [DOI:10.1785/gssrl.78.1.134.](https://link.springer.com/article/10.1007/s00024-015-1044-7)
 - Zhang, S., Wang, R., Dahm, T., Zhou, S., Heimann, S., Prompt elasto-gravity signals (PEGS) and their 
-potential use in modern seismology. *Earth and Planetary Science Letters*, 536, p.116150.[DOI: 10.1016/j.epsl.2020.116150](https://www.sciencedirect.com/science/article/abs/pii/S0012821X20300935)
+potential use in modern seismology. *Earth and Planetary Science Letters*, 536, p.116150. [DOI: 10.1016/j.epsl.2020.116150](https://www.sciencedirect.com/science/article/abs/pii/S0012821X20300935)
 
 ### Languages
 - Fluent in English
