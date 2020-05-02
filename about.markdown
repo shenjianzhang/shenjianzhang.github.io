@@ -1,6 +1,6 @@
 ---
 layout: page
-title: About
+title: ShenjianZhang
 permalink: /about/
 ---
 ## ZHANG, Shenjian   张申健
