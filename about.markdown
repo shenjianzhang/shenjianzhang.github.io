@@ -5,7 +5,7 @@ permalink: /about/
 ---
 ## ZHANG, Shenjian   张申健
 
-I am a PhD. candidate at Institute of Theoretical and Applied Geophysics, Peking University, supervised by Prof. Shiyong Zhou. I'm interested in simulations of global seismograms, topography of the boudaries underground, (e.g. boundaries of mantle transition zone, CMB), and prompt elasto-gravitational sigals (PEGS).
+I am a PhD. candidate at Institute of Theoretical and Applied Geophysics, [Peking University](https://www.pku.edu.cn/), supervised by Prof. Shiyong Zhou. I'm interested in simulations of global seismograms, topography of the boudaries underground, (e.g. boundaries of mantle transition zone, CMB), and prompt elasto-gravitational sigals (PEGS).
 
 ### Education
 + **2015.09 - present**, PhD. candidate in Solid Geophysics, Peking University, China.
@@ -31,10 +31,11 @@ Advisor: Dr. Shiyong Zhou.
 Calculated the b-value distribution in Southwest China using Bayesian method and spline functions.   
 
 ### Pulications
+- Zhang, S., Wang, R., Dahm, T., Zhou, S., Heimann, S., Prompt elasto-gravity signals (PEGS) and their
+potential use in modern seismology. *Earth and Planetary Science Letters*, 536, p.116150. [DOI: 10.1016/j.epsl.2020.116150](https://www.sciencedirect.com/science/article/abs/pii/S0012821X20300935)                
 - Zhang, S., Zhou, S., 2016. Spatial and temporal variation of b-value in Southwest China. *Pure &
 Applied Geophysics*, 173, 85-96. [DOI:10.1785/gssrl.78.1.134.](https://link.springer.com/article/10.1007/s00024-015-1044-7)
-- Zhang, S., Wang, R., Dahm, T., Zhou, S., Heimann, S., Prompt elasto-gravity signals (PEGS) and their
-potential use in modern seismology. *Earth and Planetary Science Letters*, 536, p.116150. [DOI: 10.1016/j.epsl.2020.116150](https://www.sciencedirect.com/science/article/abs/pii/S0012821X20300935)
+
 
 ### Languages
 - Fluent in English
