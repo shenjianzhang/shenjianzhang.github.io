@@ -245,7 +245,7 @@ $ git rm moon.txt
 - *暂存区域(stage area)*，在`git add`之后，文件成为跟踪(tracked)状态，这部分的更改将会构成下一次的提交(commit);
 - *本地仓库(local repository)*，`git commit`后，提交(commit)在这里被永久记录下来，一个个提交(commit)就是对于项目更改过程的一次次快照。
 
-![image01](/img/git-staging-area.svg)
+![git-staging-area](/img/git-staging-area.svg)
 
 (引自：<https://swcarpentry.github.io/git-novice/04-changes/index.html>
 
