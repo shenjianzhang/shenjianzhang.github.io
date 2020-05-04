@@ -2,7 +2,7 @@
 layout: post
 title:  "GIT 基础命令 (2)"
 date:   2020-05-02 10:23:28 +0800
-categories: other
+categories: git
 ---
 
 [”GIT 基础命令 (1)"](https://shenjianzhang.github.io/other/2020/04/29/Basic-GIT-Commands.html)中列出的命令足以完成Git在本地仓库(repository)进行版本管理的基本操作，这篇文章则以Git最常见的远程仓库托管网站[GitHub](https://www.github.com)为例，展示如何利用远程仓库(remote repository)来进行版本管理，如何在本地仓库(local repository)和远程仓库(remote repository)之间进行同步，以及如何进行合作的项目开发。

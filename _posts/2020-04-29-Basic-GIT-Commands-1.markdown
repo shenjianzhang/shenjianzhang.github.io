@@ -2,7 +2,7 @@
 layout: post
 title:  "GIT 基础命令 (1)"
 date:   2020-04-29 21:32:28 +0800
-categories: other
+categories: git
 ---
 
 [**Git**](https://git-scm.com/) 是一款免费开源的分布式版本管理系统(free and open source distributed version control system)。在我日常工作中，使用到的场景主要为代码更新时的版本控制，以及与[Github](https://github.com/)的交互。通俗来说就是记录每一次代码修改的内容，通过比较修改细节以发现出现问题的原因或代码位置，从而在需要时合并不同版本(覆盖旧的版本)，或恢复到特定修改节点(Git saves single changes for each document and can be used to merge multiple version of one document.)。
