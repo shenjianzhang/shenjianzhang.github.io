@@ -247,7 +247,7 @@ $ git rm moon.txt
 
 ![git-staging-area](/img/git-staging-area.svg)
 
-(引自：<https://swcarpentry.github.io/git-novice/04-changes/index.html>
+(引自：<https://swcarpentry.github.io/git-novice/04-changes/index.html>)
 
 
 
