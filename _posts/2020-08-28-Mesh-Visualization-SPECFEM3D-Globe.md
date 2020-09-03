@@ -8,6 +8,8 @@ categories: specfem3d
 
 这篇文章是我在学习使用理论地震图计算软件[SPECFEM3D_GLOBE](https://geodynamics.org/cig/software/specfem3d_globe/)时，针对其划分的网格(mesh)的可视化问题所整理的一些笔记。
 
+**注意： 如果第一次打开本网页时公式显示出现问题，只需要刷新即可。**
+
 ## 网格的生成
 Specfem3D_Globe是一个基于谱元法(Spectral element method)来计算理论地震图的程序(reference)，其主要编程语言为Fortran和C。与有限元方法类似，在最终求解之前，都要先进行离散化，单元分析和总体分析。在编程实践中，Specfem3D_Globe通过编译Fortran代码生成的可执行文件 **xmeshfem3D** 来实现网格划分、单元分析和总体分析。在这一部分中，简单介绍一下Specfem3D划分网格的方法，包括理论基础以及相关代码。详细的介绍可以参考[Komatitsch & Tromp (2002)](https://academic.oup.com/gji/article/149/2/390/727101)。
 
@@ -50,7 +52,7 @@ f^{\alpha\beta\gamma} l_{\alpha}(\xi) l_{\beta}(\eta) l_{\gamma}(\zeta)
 
 这里需要注意的是，对于任一Lagrange所需要的5个控制点并不是任意选取的，而是选择5个[Gauss-Lobatto-Legendre点](https://en.wikipedia.org/wiki/Gaussian_quadrature)，这种选取方法会大大简化之后的积分计算以及时间域的求解。应用Gauss–Lobatto–Legendre积分规则，单元上的积分可以写为(Komatitsch & Tromp, 2002, Eq.29)
 \[
-\int_{\Omega_e}f(\mathbf{x}) \approx
+\int_{\Omega_e}f(\mathbf{x}) dV \approx
 \sum_{\alpha,\beta,\gamma=0}^{n_{\alpha},n_{\beta},n_{\gamma}}
 \omega_{\alpha}\omega_{\beta}\omega_{\gamma}
 f^{\alpha\beta\gamma} J^{\alpha\beta\gamma}
@@ -72,17 +74,19 @@ f^{\alpha\beta\gamma} J^{\alpha\beta\gamma}
 主程序`xmeshfem3D` 由6个子程序(subroutine)构成，各自作用如下
 ![subroutines_1st](/img/subroutines_1st.png)
 
-为了加快网格划分速度、减少内存，`xmeshfem3D`采用了并行编程计算(例如MPI库)的方法，具体表现为，对于在**Cubed sphere**中组成全球介质的6个块体(chunk)中的任一个，再将其划分为`NPROC_XI` * `NPROC_ETA`个分割(slice)，每个分割(slice)上的网格划分在一个处理器(processor)上完成。对于每个单独的分割(slice)或者说在每个单独的处理器(processor)上，网格的划分是从三个层面上完成的。
+为了加快网格划分速度、减少内存，**xmeshfem3D** 采用了并行编程计算(例如MPI库)的方法，具体表现为，对于在 **Cubed sphere** 中组成全球介质的6个块体(chunk)中的任一个，再将其划分为`NPROC_XI`\*`NPROC_ETA` 个分割(slice)，每个分割(slice)上的网格划分在一个处理器(processor)上完成。对于每个单独的分割(slice)或者说在每个单独的处理器(processor)上，网格的划分是从三个层面上完成的。
 
-首先，介质在径向上被划分为地壳和地慢、外核和内核3个区域(region)，对应的索引分别是`IREGION_CRUST_MANTLE=1`, `IREGION_OUTER_CORE=2` 和`IREGION_INNER_CORE=3`，在每个区域(region)中，网格的划分是在层(layer)的层面上进行的，层(layer)的划分则是根据地球内部的间断面，如Moho面、410km间断面、660km间断面等，以单一地壳的1D地球模型为例，地球由地表到地核被划分为13层，即`NUMBER_OF_MESH_LAYERS=13`，每个区域(region)中对应的层(layer)在子程序`initialize_layers`中由`ifirst_region`和`ilast_region`定义。最后，在任一(`ilayer`)层(layer)中，介质被最终划分为一个个的单元，垂向的单元数目由设定的每层单元数`ner(ilayer)`来确定，水平向由`NEX_PER_PROC_XI=NEX_XI/NPROC_XI`、`NEX_PER_PROC_ETA=NEX_ETA/NPROC_ETA`以及单元放大倍数`ratio_sampling_array(ilayer)`所确定。
+首先，介质在径向上被划分为地壳和地慢、外核和内核3个区域(**region**)，对应的索引分别是`IREGION_CRUST_MANTLE=1`, `IREGION_OUTER_CORE=2` 和`IREGION_INNER_CORE=3`，在每个区域(region)中，网格的划分是在层(**layer**)的层面上进行的，层(layer)的划分则是根据地球内部的间断面，如Moho面、410km间断面、660km间断面等，以单一地壳的1D地球模型为例，地球由地表到地核被划分为13层，即`NUMBER_OF_MESH_LAYERS=13`，每个区域(region)中对应的层(layer)在子程序`initialize_layers`中由`ifirst_region`和`ilast_region`定义。最后，在任一层(layer)中（如第`ilayer`层)，介质被最终划分为一个个的单元(**elements**)，垂向的单元数目由设定的每层单元数`ner(ilayer)`来确定，水平向由`NEX_PER_PROC_XI=NEX_XI/NPROC_XI`、`NEX_PER_PROC_ETA=NEX_ETA/NPROC_ETA`以及单元放大倍数`ratio_sampling_array(ilayer)`所确定。
 
 具体到相应的子程序，在子程序`create_meshes()`中，对3个区域(region)进行循环，在每个循环中，对于每一个区域(region)，首先得到这个区域中的单元和GLL节点数目`nspec`,`nglob`,`npointot`，之后 通过调用子程序`create_regions_mesh(...)`来对该区域进行网格划分，计算单元中GLL节点位置和介质参数，并写入文件。在子程序`create_regions_mesh(...)`中，首先调用`crm_setup_layers(...)`来计算自然坐标系中GLL节点的位置，相应的权重，和形函数及其导数在这些节点的取值，之后调用`create_regions_elements(...)`，在这一子程序中，通过对区域中的层(layer)进行循环，在每个循环中调用`create_regular_elements(...)`来生成这一层中的网格单元，在生成网格单元时，通过`compute_coord_main_mesh(...)`来计算各单元27个控制点在地球中的相对位置`xelem(27)`, `yelem(27)`, `zelem(27)`，之后调用`compute_element_properties(...)`得到单元内125个GLL节点的位置和介质参数`rhostore`, `kappavstore`等。在`create_regions_elements(...)`计算完成后，再调用`create_mass_matrices(...)`计算质量矩阵(mass matrix)(Komatitsch & Tromp, 2002, Eq.33 & 46)在GLL节点处的值。最后调用子程序`save_arrays_solver(...)`将前面计算得到的结果写入相应的二进制文件中。程序流程示意图如下：
 
-![subroutines_2nd](/img/subroutines_2nd.png)
+<div style="text-align:center">
+<img src="/img/subroutines_2nd.png" width="400"/>
+</div>
 
 ## 网格的可视化
 ### 可视化步骤
-这里虽然我们采用程序[Paraview](https://www.paraview.org/)来进行网格可视化，但是我们并没有采用`.vtk`格式的文件，而是采用AVS对应的`.inp`文件，Paraview同样可以读取这一格式的文件。为了得到这一文件，首先，我们需要将参数文件`/DATA/Par_file`中的`SAVE_MESH_FILES`选项设为`true`，这样运行**xmeshfem3D**后会生成相应的数据文件。我们在程序根目录中编译后处理程序**xcombine_AVS_DX**,并在`DATABASES_MPI`的上级目录中运行，这一程序的作用是根据使用者的输入参数，将**xmeshfem3D**生成的各分割(slice)的数据文件组合成AVS/UCD格式。下面以程序中的例子`~/EXAMPLES/regional_Greece_small/`为例，来展示如何得到UCD格式的数据文件。
+这里虽然我们采用程序[Paraview](https://www.paraview.org/)来进行网格可视化，但是我们并没有采用`.vtk`格式的文件，而是采用AVS对应的`.inp`文件，Paraview同样可以读取这一格式的文件。为了得到这一文件，首先，我们需要将参数文件`/DATA/Par_file`中的`SAVE_MESH_FILES`选项设为`true`，这样运行**xmeshfem3D**后会生成相应的数据文件。我们在程序根目录中编译后处理程序 **xcombine_AVS_DX**，并在`DATABASES_MPI`的上级目录中运行，这一程序的作用是根据使用者的输入参数，将**xmeshfem3D**生成的各分割(slice)的数据文件组合成AVS/UCD格式。下面以程序中的例子`~/EXAMPLES/regional_Greece_small/`为例，来展示如何得到UCD格式的数据文件。
 ```
 $ cd ~/EXAMPLES/regional_Greece_small/
 $ ./run_this_example.sh
