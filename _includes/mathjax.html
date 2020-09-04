@@ -1,11 +1,25 @@
 {% if page.mathjax %}
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    <!--这部分是 tex2jax.js 预处理程序需要的配置-->
     tex2jax: {
       inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      displayMath: [ ['$$','$$'], ['\[','\]'] ],
+      displayMath: [ ['$$','$$'], ['\\[','\\]'] ],
       processEscapes: true,
       processEnvironments: true
+    },
+    <!--处理 TeX 及相关插件的输入的-->
+    TeX: {  
+      equationNumbers: { autoNumber: "AMS" },
+      noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, 
+      Macros: { href: "{}" } 
+    },
+    <!-- MathJax **处理 HTML/CSS 输出的配置**-->
+    "HTML-CSS": { 
+    <!--设置字体（preferredFont、availableFonts）-->
+      availableFonts: ["TeX"] 
     }
   });
 </script>
