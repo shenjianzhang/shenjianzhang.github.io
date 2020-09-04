@@ -15,12 +15,12 @@ categories: git
 GitHub为我们初始化好了这个仓库(repository)，并提示我们可以通过不同方式向其中添加文件
 ![github-setup-repository](/img/github-setup-repository.png)
 我们选择 **“push an existing repository from the command line”** 来将本地仓库(local repository)中的文件和提交(commit)记录同步到GitHub中。根据网页上的提示，我们先进入本地仓库(local repository)，然后用`git remote add <shortname> <url>`将GitHub中刚刚建立的仓库(repository)设为对应的远程仓库(remote repository)
-```
+```bash
 $ cd ~/Desktop/GitExample
 $ git remote add origin https://github.com/shenjianzhang/GitExample.git
 ```
 需要注意的是，网址中” *shenjianzhang* ”为我在GitHub中的账户名称。之后可以用`git remote -v`来查看远程仓库(remote repository)是否添加成功
-```
+```bash
 $ git remote -v
 origin	https://github.com/shenjianzhang/GitExample.git (fetch)
 origin	https://github.com/shenjianzhang/GitExample.git (push)
@@ -28,7 +28,7 @@ origin	https://github.com/shenjianzhang/GitExample.git (push)
 上面所示的结果即表明已经成功配置了一个URL为“https://github.com/shenjianzhang/GitExample.git”，简称为`origin`远程仓库(remote repository)，这里简称`origin`为Git默认的远程仓库简称，当你拥有多个远程仓库或确实需要(这里的确实需要也可以理解为：我乐意就好)将某个远程仓库特殊命名时，可以在`git remote add`中使用任意简称。简称的作用就是，在之后一些本地仓库和远程仓库的互动命令中，可以用其来代表远程仓库的URL地址(这里暂不考虑SSH通信的情况，详情可以参考[Git官方帮助手册](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)。
 
 接下来我们就把我们本地仓库(local repository)中的内容推送到远程仓库(remote repository)中
-```
+```bash
 $ git push -u origin master
 ```
 在输入我们在GitHub的用户名和密码后(如果设置好了SSH通信，可以利用SSH-key来实现免密登录)，就会看到本地仓库推送到远程仓库的过程
@@ -44,7 +44,7 @@ To https://github.com/shenjianzhang/GitExample.git
 Branch 'master' set up to track remote branch 'master' from 'origin'.
 ```
 提示信息中最后三行是`git push`命令中`-u`选项的结果，用来将当前本地仓库的分支(branch) “master”与远程仓库的分支(branch)"master"联系起来，这样在使用`git pull`拉取远程仓库内容时，不再需要额外选项。尝试运行
-```
+```bash
 $ git pull origin master
 ```
 得到输出
