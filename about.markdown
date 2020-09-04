@@ -8,10 +8,10 @@ permalink: /about/
 I am a PhD. candidate at Institute of Theoretical and Applied Geophysics, [Peking University](https://www.pku.edu.cn/), supervised by Prof. Shiyong Zhou. I'm interested in simulations of global seismograms, topography of the boudaries underground, (e.g. boundaries of mantle transition zone, CMB), and prompt elasto-gravitational sigals (PEGS).
 
 ### Education
-+ **2015.09 - present**, PhD. candidate in Solid Geophysics, Peking University, China.
++ **2015.09 - present**, PhD. candidate in Solid Geophysics, Peking University, Beijing, China.
 + **2017.09 - 2019.08**, visiting student advised by Prof. Frederik Tilamnn and Dr. Rongjiang Wang in GFZ Potsdam, Potsdam, Germany.
 + **2016.10 - 2017.03**, visiting student advised by Prof. Frederik Tilamnn in Free University of Berlin, Berlin, Germany.
-+ **2015.07**,           BSc in Geophysics, Peking University, China.
++ **2015.07**,           BSc in Geophysics, Peking University, Beijing, China.
 
 ### Research Experience
 - **2019.02 - present**, [*A new straightforward approach to simulate prompt elasto-gravity signals (PEGS).*](https://www.gfz-potsdam.de/en/media-and-communication/news/all/article/how-earthquakes-deform-gravity/)   
