@@ -157,7 +157,7 @@ R_{xx}^E(\tau) = \lim \limits_{T \to \infty} \frac{1}{T} \int_{-T/2}^{2/T} x(t)x
 ![random-signal-ergodic](/img/random-signal-ergodic.png)
 
 ### 功率谱密度(Power spectral density)
-在这篇笔记里，直接给出随机信号的功率谱密度(关于功率谱密度的更详细的介绍，以及功率谱的计算见笔记[功率密度谱(Power Spectral Density)笔记](http://localhost:4000/matched-filter/2020/11/24/Random-Signals.html))。
+在这篇笔记里，直接给出随机信号的功率谱密度(关于功率谱密度的更详细的介绍，以及功率谱的计算见笔记[功率密度谱(Power Spectral Density)笔记](https://shenjianzhang.github.io/matched-filter/2020/11/26/Power-Spectral-Density.html))。
 
 稳态随机过程的功率谱密度$S(f)$的定义为
 \\[ \begin{equation}
@@ -180,7 +180,7 @@ R_{xx}(\tau) = E[x(t,\theta)x(t+\tau,\theta)]
 \end{equation}\\]
 - 功率谱密度(power spectral density, PSD)
 \\[ \begin{equation}
-S_xx(f) = \mathscr{F}[R_{xx}] = \int_{-\infty}^{\infty} R_{xx}(\tau)\mathrm{e}^{-i2\pi f \tau} d\tau
+S_{xx}(f) = \mathscr{F}[R_{xx}] = \int_{-\infty}^{\infty} R_{xx}(\tau)\mathrm{e}^{-i2\pi f \tau} d\tau
 \end{equation} \\]
 
 ## 系统对于随机信号的响应
