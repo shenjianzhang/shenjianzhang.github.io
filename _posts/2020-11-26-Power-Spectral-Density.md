@@ -198,7 +198,7 @@ var\left\lbrace \hat{S} _{xx}^{Wel}(f) \right\rbrace =
 在这一部分中，展示对于同一段信号，分别采用**周期图(periodogram)方法**和**Welch方法**计算得到的功率谱密度PSD。
 
 输入信号$x(t)$为由一个正弦信号$s(t) = 0.4 \sin (2 \pi f_0 t), f_0=1.0Hz$
-和取样自$x \sim N(0,0.01)$的高斯白噪音(Gaussian white noise)$n(t)$组成，即$x(t)=s(t)+n(t)$，采样率为10Hz，时间序列长度为100s. s_
+和取样自$x \sim N(0,0.01)$的高斯白噪音(Gaussian white noise)$n(t)$组成，即$x(t)=s(t)+n(t)$，采样率为10Hz，时间序列长度为100s.
 
 ```python
 import numpy as np
