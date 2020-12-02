@@ -40,7 +40,7 @@ x(t) = \int_{-\infty}^{\infty} \tilde{x}(f) \exp(i 2\pi ft) df
 由于噪音$n(t)$序列为实数序列，即$\tilde{n}(-f) = \tilde{n}^{* }(f)$，所以在这里我们可以采用只在正频率定义的单边功率谱密度$S_n(f)$来表示噪音在频率域的特征。
 
 ## 匹配滤波(Match filter)
-匹配滤波(matched filter)方法是在稳态高斯随机噪音中提取已知信号的常见方法(reference)。匹配滤波是一个最佳线性滤波器，也就是在输入已知信号和稳态高斯随机噪声的情况下，获得最大信噪比(signal to noise ratio, SNR)。
+匹配滤波(matched filter)方法是在稳态高斯随机噪音中提取已知信号的常见方法(e.g. Abbott et al., 2016; Allen et al., 2012; )。匹配滤波是一个最佳线性滤波器，也就是在输入已知信号和稳态高斯随机噪声的情况下，获得最大信噪比(signal to noise ratio, SNR)。
 
 根据匹配滤波理论，对于已知信号模板(template)$h(t)$及其频谱$\tilde{h}(f)$，实现最大信噪比的滤波器可以表示为$\tilde{h}^{* }(f)/S_n(f)$，由于$h(t)$为实序列，$\tilde{h}^{* }(f)$对应的时间域表示$h(-t)$，即为模板时间反向的结果(time-reversed template)，因此最优滤波器也就是一个通过噪音频谱加权之后的反向模板(a time-reversed copy of the template, weighted by the expected noise in the detector)(Allen, 2005)。
 
