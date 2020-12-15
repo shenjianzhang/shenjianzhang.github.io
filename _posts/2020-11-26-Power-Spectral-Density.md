@@ -78,7 +78,7 @@ R_{xx}[k] = E[x(n)x(n-k)] = \frac{1}{N} \sum_{n=0}^{N-1} x[n]x[n-k]
 \end{equation} \\]
 因为这里采用的均是离散Fourier变换(DFT)，所以在计算之后还要对$\hat{S} _{xx}$进行归一化，从而使得功率谱密度下方的面积等于总的平均功率，即
 \\[\begin{equation}
-\int _{0}^{fs/2} \hat{S} _{xx}(f) df = R_{ff}(0)
+\int _{0}^{fs/2} \hat{S} _{xx}(f) df = R _{xx}(0)
 \end{equation}\\]
 这也就是令$\hat{S} _{xx}$具有$\mathrm{power/Hz}$的量纲。归一化之后的$\hat{S} _{xx}$可以表示为
 \\[\begin{equation}
